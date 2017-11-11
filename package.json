@@ -1,17 +1,17 @@
 {
-  "name": "node-ab",
+  "name": "bench",
   "version": "0.0.1",
-  "description": "node-ab",
-  "homepage": "https://github.com/maozedong/node-ab#readme",
+  "description": "bench",
+  "homepage": "https://github.com/maozedong/bench#readme",
   "bugs": {
-    "url": "https://github.com/maozedong/node-ab/issues"
+    "url": "https://github.com/maozedong/bench/issues"
   },
   "license": "ISC",
   "author": "Ostap Nagovitsyn",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maozedong/node-ab.git"
+    "url": "git+https://github.com/maozedong/bench.git"
   },
   "scripts": {
     "test": "standard ./src ./test && mocha"

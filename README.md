@@ -1,8 +1,8 @@
-# node-ab
+# bench
 async benchmarking tool for nodejs based on process.hrtime
+
 suitable for benchmarking with precision more than 10 ms
 
-###example
 ```javascript
 const {Bench} = require('bench')
 const ab = new Bench({
