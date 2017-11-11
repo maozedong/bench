@@ -1,0 +1,32 @@
+{
+  "name": "node-ab",
+  "version": "0.0.1",
+  "description": "node-ab",
+  "homepage": "https://github.com/maozedong/node-ab#readme",
+  "bugs": {
+    "url": "https://github.com/maozedong/node-ab/issues"
+  },
+  "license": "ISC",
+  "author": "Ostap Nagovitsyn",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maozedong/node-ab.git"
+  },
+  "scripts": {
+    "test": "standard ./src ./test && mocha"
+  },
+  "dependencies": {
+    "d3-array": "^1.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "pre-commit": "^1.2.2",
+    "sinon": "^4.1.2",
+    "standard": "^10.0.3"
+  },
+  "pre-commit": [
+    "test"
+  ]
+}
