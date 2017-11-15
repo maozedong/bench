@@ -1,7 +1,7 @@
 # bench
 async benchmarking tool for nodejs based on process.hrtime
 
-suitable for benchmarking with precision more than 10 ms
+suitable for benchmarking with precision more than 2 ms
 
 ```javascript
 const {Bench} = require('bench')
