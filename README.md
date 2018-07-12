@@ -21,22 +21,26 @@ const results = await ab.run(()=>{
 console.log(results)
 
 // prints results in ms
-// { raw: { successed: {...}, failed: {...}},
-//   successed: 
-//    { min: 499.636366,
-//      max: 501.797948,
-//      mean: 501.06490170000006,
-//      median: 501.24732500000005,
-//      firstQuantile: 501.641905,
-//      thirdQuantile: 499.96806525,
-//      variance: 0.5229299790973269,
-//      deviation: 0.7231389763367252 },
-//   failed: null,
-//   successRank: 1,
-//   failRank: 0,
-//   totalTime: 2146.468911,
-//   cyclesPerSecond: 4.658814273411109,
-//   options: { concurrency: 5, cycles: 10, minDelay: 1000, randomize: 100 } }
+// {
+//   'raw': { 'successed': {...}, 'failed': {...} },
+//   'successed': {
+//     'min': 4.63933,
+//     'max': 96.693322,
+//     'mean': 51.4680112,
+//     'median': 49.557461,
+//     'firstQuantile': 4.63933,
+//     'thirdQuantile': 94.68499,
+//     '0.99': 96.61298871999999,
+//     'variance': 1921.4861022466966,
+//     'deviation': 43.83475906454485,
+//   },
+//   'failed': null,
+//   'successRank': 1,
+//   'failRank': 0,
+//   'totalTime': 171.323604,
+//   'cyclesPerSecond': 29.184536650303016,
+//   'options': { 'concurrency': 2, 'cycles': 5, 'minDelay': 0, 'randomize': 0 },
+// }
 ```
 where
 

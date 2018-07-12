@@ -1,4 +1,4 @@
-const {EventEmitter} = require('events')
+const { EventEmitter } = require('events')
 const d3 = require('d3-array')
 
 class Bench extends EventEmitter {
@@ -8,7 +8,7 @@ class Bench extends EventEmitter {
   }
 
   async run (fn) {
-    if(typeof fn !== 'function') throw new Error('fn is not a function')
+    if (typeof fn !== 'function') throw new Error('fn is not a function')
     if (this._inProggress) throw new Error('already started')
     this._inProggress = true
     this.cycles = 0
@@ -19,7 +19,7 @@ class Bench extends EventEmitter {
     const startTime = process.hrtime()
     this.intervalObject = setInterval(() => {
       const percents = (this.cycles * 100) / this.options.cycles
-      this.emit(EVENTS.UPDATE, {percents})
+      this.emit(EVENTS.UPDATE, { percents })
     }, 1000)
 
     for (let i = 0; i < this.options.concurrency; i++) {
@@ -38,27 +38,29 @@ class Bench extends EventEmitter {
     const failedArr = Object.values(failed).map(([s, ns]) => (s * NS_PER_SEC + ns) / 1e6)
     const totalTime = total[0] * 1000 + total[1] / 1000000
     return {
-      raw: {successed, failed},
+      raw: { successed, failed },
       successed: successedArr.length ? Bench._getStats(successedArr) : null,
       failed: failedArr.length ? Bench._getStats(failedArr) : null,
       successRank: successedArr.length / this.options.cycles,
       failRank: failedArr.length / this.options.cycles,
       totalTime,
       cyclesPerSecond: this.options.cycles * 1000 / totalTime,
-      options: this.options
+      options: this.options,
     }
   }
 
   static _getStats (array) {
+    const sorted = array.sort()
     return {
-      min: d3.min(array),
-      max: d3.max(array),
-      mean: d3.mean(array),
-      median: d3.median(array),
-      firstQuantile: d3.quantile(array, 0.25),
-      thirdQuantile: d3.quantile(array, 0.75),
-      variance: d3.variance(array),
-      deviation: d3.deviation(array),
+      min: d3.min(sorted),
+      max: d3.max(sorted),
+      mean: d3.mean(sorted),
+      median: d3.median(sorted),
+      firstQuantile: d3.quantile(sorted, 0.25),
+      thirdQuantile: d3.quantile(sorted, 0.75),
+      '0.99': d3.quantile(sorted, 0.99),
+      variance: d3.variance(sorted),
+      deviation: d3.deviation(sorted),
     }
   }
 
@@ -75,14 +77,14 @@ class Bench extends EventEmitter {
       } catch (error) {
         diff = process.hrtime(time)
         this._failedResults[id] = diff
-        this.emit(Bench.EVENTS.FAIL, {error, id})
+        this.emit(Bench.EVENTS.FAIL, { error, id })
       }
       const delayMs = Math.max(this.options.minDelay - Bench._toMs(diff), 0)
       await this._delay(delayMs, this.options.randomize)
     }
   }
 
-  static _toMs([s, ns]) {
+  static _toMs ([s, ns]) {
     return (s * NS_PER_SEC + ns) / 1e6
   }
 
